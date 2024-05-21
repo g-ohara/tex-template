@@ -1,0 +1,87 @@
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesClass{slide-ja}[2024/05/21 Style for LuaTeX and Beamer (Genji Ohara)]
+\LoadClass[aspectratio=169]{beamer}
+
+% LuaTeX in Japanese
+\RequirePackage{luatexja}
+
+
+% -----------------------------------------------------------------------------
+% Beamer Theme and Background Color
+% -----------------------------------------------------------------------------
+
+\usetheme{metropolis}
+\setbeamercolor{background canvas}{bg=white}
+\RequirePackage{appendixnumberbeamer}
+
+
+% -----------------------------------------------------------------------------
+% Font
+% -----------------------------------------------------------------------------
+
+% Package for designating Japanese font
+\RequirePackage{luatexja-fontspec}
+
+% Math font
+\usefonttheme[onlymath]{serif}
+
+% Japanese font
+\setmainjfont{Harano Aji Gothic}
+\setsansjfont{Harano Aji Gothic}
+% These commands cause "Package fontspec Warning: ..."
+% \setmainfont{Harano Aji Mincho}
+% \setsansfont{Harano Aji Gothic}
+
+% Caption font (make it smaller and disable reference number)
+\RequirePackage[font=scriptsize,labelformat=empty]{caption}
+
+% Footnote font (make it smaller)
+\setbeamerfont{footnote}{size=\tiny}
+
+
+% -----------------------------------------------------------------------------
+% TikZ
+% -----------------------------------------------------------------------------
+
+\RequirePackage{tikz}
+\usetikzlibrary{shapes.callouts,tikzmark,calc}
+
+% Usage: \COLabel{name#1}{text#2}
+% e.g.:  \COLabel{psi1}{$\psi_1$}
+\newcommand{\COLabel}[2]{%
+  \tikz[%
+    remember picture,%
+    baseline = (#1.base),%
+    every node/.style={inner sep=0,outer sep=0}%
+  ]{%
+    \node(#1){#2};%
+  }
+}
+
+% Usage: \CO<page#1>{target name#2}{++(x,y)#3}[opt#4]{text#5}
+% e.g.:  \CO<2>{psi1}{++(-4,1.5)}[text width=3cm]{hogehoge fugafuga piyopiyo}
+\NewDocumentCommand\CO{d<> m m O{} m}{%
+  \begin{tikzpicture}[
+      remember picture,
+      overlay,
+      every text node part/.style={align=center}
+    ]
+    \IfValueTF{#1}{\path<#1>}{\path} (#2.center) #3 node[%
+      anchor=center,%
+      rectangle callout,%
+      fill=blue!20,%
+      callout absolute pointer={(#2.mid)},%
+      font=\bfseries\footnotesize,
+      rounded corners,
+      #4
+    ]{#5};
+  \end{tikzpicture}
+}
+\newcommand{\colorrect}[2]
+{%
+  \tikz[baseline = (x.base),
+    every text node part/.style={align=center}
+  ]{%
+    \node(x)[rectangle, fill=#1!10, rounded corners]{#2}
+  }
+}
