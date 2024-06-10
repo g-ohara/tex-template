@@ -82,6 +82,6 @@
   \tikz[baseline = (x.base),
     every text node part/.style={align=center}
   ]{%
-    \node(x)[rectangle, fill=#1!10, rounded corners]{#2}
+    \node(x)[rectangle, fill=#1, rounded corners]{#2}
   }
 }
