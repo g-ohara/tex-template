@@ -8,47 +8,42 @@
 
 \begin{document}
 
-{%
-% ignore overfull warning on title page
-\vfuzz=15.63992pt
-\maketitle
-}
+\section{セクション名}
 
 \begin{frame}
-	\frametitle{フレームのタイトル}
-	ここにフレームの内容
-	\begin{itemize}
-		\item アイテム1
-		\item \COLabel{item2}{アイテム2}
-		\item アイテム3
-	\end{itemize}
-	\CO{item2}{++ (2.0,-1.5)}{これはアイテム2です}
+  \frametitle{フレームのタイトル}
+  ここにフレームの内容
+  \begin{itemize}
+    \item アイテム1
+    \item \COLabel{item2}{アイテム2}
+    \item アイテム3
+  \end{itemize}
+  \CO{item2}{++ (2.0,-1.5)}{これはアイテム2です}
 \end{frame}
 
 \begin{frame}
-	\frametitle{数式}
-	\begin{align}
-		\label{eq:exp}
-		e^x & = 1 + x + \frac{x^2}{2!} + \frac{x^3}{3!} + \frac{x^4}{4!} + \ldots \\
-		    & =\sum_{k=0}^\infty \frac{x^k}{k!}
-	\end{align}
-	式\eqref{eq:exp}は$e^x$のTaylor展開です．
-
+  \frametitle{数式}
+  \begin{align}
+    \label{eq:exp}
+    e^x & = 1 + x + \frac{x^2}{2!} + \frac{x^3}{3!} + \frac{x^4}{4!} + \ldots \\
+        & =\sum_{k=0}^\infty \frac{x^k}{k!}
+  \end{align}
+  式\eqref{eq:exp}は$e^x$の\colorrect{red!20}{Taylor展開}です．
 \end{frame}
 
 \begin{frame}
-	\frametitle{表}
-	\begin{table}
-		\caption{表のキャプション}
-		\begin{tabular}{ll}
-			\toprule
-			あい & うえお \\
-			\midrule
-			かき & くけこ \\
-			さし & すせそ \\
-			\bottomrule
-		\end{tabular}
-	\end{table}
+  \frametitle{表}
+  \begin{table}
+    \caption{表のキャプション}
+    \begin{tabular}{ll}
+      \toprule
+      あい & うえお \\
+      \midrule
+      かき & くけこ \\
+      さし & すせそ \\
+      \bottomrule
+    \end{tabular}
+  \end{table}
 \end{frame}
 
 \end{document}
