@@ -40,6 +40,51 @@
 
 
 % -----------------------------------------------------------------------------
+% Title Page
+% -----------------------------------------------------------------------------
+
+% Prevent warning: "Overfull \vbox (15.63992pt too high) detected at line ..."
+\let\oldmaketitle\maketitle
+\renewcommand{\maketitle}{\vfuzz=15.63992pt\oldmaketitle}
+
+% Automatically create title page
+\AtBeginDocument{\maketitle}
+
+
+% -----------------------------------------------------------------------------
+% Section Page
+% -----------------------------------------------------------------------------
+
+% Style for section page
+\setbeamertemplate{section page}{%
+  \begingroup
+  \begin{beamercolorbox}[sep=10pt,center,rounded=true,shadow=true]{section title}
+    \usebeamerfont{section title}\thesection.~\insertsection\par
+  \end{beamercolorbox}
+  \endgroup
+}
+
+
+% -----------------------------------------------------------------------------
+% Bibliography
+% -----------------------------------------------------------------------------
+
+\usepackage[style=numeric, url=false, doi=false]{biblatex}
+\def\bibsize{\tiny}
+\setbeamerfont{bibliography entry author}{size=\bibsize}
+\setbeamerfont{bibliography entry title}{size=\bibsize}
+\setbeamerfont{bibliography entry note}{size=\bibsize}
+
+
+% -----------------------------------------------------------------------------
+% DateTime
+% -----------------------------------------------------------------------------
+
+% For \DTMdisplaydate
+\usepackage[useregional]{datetime2}
+
+
+% -----------------------------------------------------------------------------
 % TikZ
 % -----------------------------------------------------------------------------
 
