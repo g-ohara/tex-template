@@ -1,6 +1,10 @@
 \NeedsTeXFormat{LaTeX2e}
 \ProvidesClass{slide-ja}[2024/05/21 Style for LuaTeX and Beamer (Genji Ohara)]
-\LoadClass[aspectratio=169]{beamer}
+
+\RequirePackage{xkeyval}
+\DeclareOptionX{aspectratio}[169]{\def\aspectratio{#1}}
+\ProcessOptionsX{}
+\LoadClass[aspectratio=\aspectratio,10pt]{beamer}
 
 % LuaTeX in Japanese
 \RequirePackage{luatexja}
@@ -10,7 +14,7 @@
 % Beamer Theme and Background Color
 % -----------------------------------------------------------------------------
 
-\usetheme{metropolis}
+\usetheme[block=fill,numbering=fraction]{metropolis}
 \setbeamercolor{background canvas}{bg=white}
 \RequirePackage{appendixnumberbeamer}
 
