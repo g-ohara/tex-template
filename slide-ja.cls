@@ -30,7 +30,7 @@
 \usefonttheme[onlymath]{serif}
 
 % Japanese font
-\setmainjfont{Harano Aji Gothic}
+\setmainjfont{Harano Aji Gothic}[Scale=0.9]
 \setsansjfont{Harano Aji Gothic}
 % These commands cause "Package fontspec Warning: ..."
 % \setmainfont{Harano Aji Mincho}
@@ -70,10 +70,52 @@
 
 
 % -----------------------------------------------------------------------------
+% Frame Title
+% -----------------------------------------------------------------------------
+
+% Set section, subsection and subsubsection as frame title
+\newcommand\mysubsectiontitle{%
+  \ifx\insertsubsection\empty\else~/~\insertsubsection\fi
+}
+\newcommand\mysubsubsectiontitle{%
+  \ifx\insertsubsubsection\empty\else~/~\insertsubsubsection\fi
+}
+\let\oldframetitle\frametitle{}
+\renewcommand{\frametitle}{
+  \oldframetitle{\thesection.~\insertsection\mysubsectiontitle\mysubsubsectiontitle}
+}
+
+
+% -----------------------------------------------------------------------------
+% Table of Contents
+% -----------------------------------------------------------------------------
+
+% Insert [short title] in ToC
+\RequirePackage{etoolbox}
+\makeatletter
+\patchcmd{\beamer@section}{{#2}{\the\c@page}}{{#1}{\the\c@page}}{}{}
+\patchcmd{\beamer@subsection}{{#2}{\the\c@page}}{{#1}{\the\c@page}}{}{}
+\patchcmd{\beamer@subsubsection}{{#2}{\the\c@page}}{{#1}{\the\c@page}}{}{}
+\makeatother
+
+
+% -----------------------------------------------------------------------------
+% Tables
+% -----------------------------------------------------------------------------
+
+\RequirePackage{booktabs}
+
+
+% -----------------------------------------------------------------------------
 % Bibliography
 % -----------------------------------------------------------------------------
 
-\usepackage[style=numeric, url=false, doi=false]{biblatex}
+\usepackage[style=numeric, sorting=none, url=false, doi=false]{biblatex}
+
+% Avoid giving different numbers to the same citations in different slides.
+\DeclareCiteCommand{\footcite}{\usebibmacro{prenote}}{\footnotemark[\thefield{labelnumber}]\footnotetext[\thefield{labelnumber}]{\fullcite{\thefield{entrykey}}}}{\multicitedelim}{\usebibmacro{postnote}}
+
+% Font size of bibliography
 \def\bibsize{\tiny}
 \setbeamerfont{bibliography entry author}{size=\bibsize}
 \setbeamerfont{bibliography entry title}{size=\bibsize}
