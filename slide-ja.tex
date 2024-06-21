@@ -1,4 +1,4 @@
-\documentclass{slide-ja}
+\documentclass[aspectratio=169]{slide-ja}
 
 % For \toprule, \midrule, \bottomrule
 \usepackage{booktabs}
@@ -8,10 +8,9 @@
 
 \begin{document}
 
-\section{セクション名}
+\section{使用例}
 
-\begin{frame}
-  \frametitle{フレームのタイトル}
+\begin{frame}{}
   ここにフレームの内容
   \begin{itemize}
     \item アイテム1
@@ -21,8 +20,9 @@
   \CO{item2}{++ (2.0,-1.5)}{これはアイテム2です}
 \end{frame}
 
-\begin{frame}
-  \frametitle{数式}
+\subsection{数式}
+
+\begin{frame}{}
   \begin{align}
     \label{eq:exp}
     e^x & = 1 + x + \frac{x^2}{2!} + \frac{x^3}{3!} + \frac{x^4}{4!} + \ldots \\
@@ -31,8 +31,10 @@
   式\eqref{eq:exp}は$e^x$の\colorrect{red!20}{Taylor展開}です．
 \end{frame}
 
+\subsection{表}
+
 \begin{frame}
-  \frametitle{表}
+  \frametitle{}
   \begin{table}
     \caption{表のキャプション}
     \begin{tabular}{ll}
@@ -44,6 +46,13 @@
       \bottomrule
     \end{tabular}
   \end{table}
+\end{frame}
+
+\appendix
+\section{付録}
+
+\begin{frame}{}
+  ここに付録の内容
 \end{frame}
 
 \end{document}

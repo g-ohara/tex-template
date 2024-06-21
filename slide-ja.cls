@@ -61,12 +61,18 @@
 
 % Style for section page
 \setbeamertemplate{section page}{%
-  \begingroup
   \begin{beamercolorbox}[sep=10pt,center,rounded=true,shadow=true]{section title}
-    \usebeamerfont{section title}\thesection.~\insertsection\par
+    \usebeamerfont{section title}\insertsectionnumber\insertsection{}
   \end{beamercolorbox}
-  \endgroup
 }
+
+
+% -----------------------------------------------------------------------------
+% Appendix
+% -----------------------------------------------------------------------------
+
+\renewcommand{\appendixname}{Appendix}
+\renewcommand{\insertsectionnumber}{\ifbeamer@inappendix\else\thesection.~\fi}
 
 
 % -----------------------------------------------------------------------------
@@ -74,15 +80,12 @@
 % -----------------------------------------------------------------------------
 
 % Set section, subsection and subsubsection as frame title
-\newcommand\mysubsectiontitle{%
-  \ifx\insertsubsection\empty\else~/~\insertsubsection\fi
-}
-\newcommand\mysubsubsectiontitle{%
-  \ifx\insertsubsubsection\empty\else~/~\insertsubsubsection\fi
-}
-\let\oldframetitle\frametitle{}
+\newcommand\withslash[1]{\ifx#1\empty\else~/~#1\fi}
+\let\oldframetitle\frametitle%
 \renewcommand{\frametitle}{
-  \oldframetitle{\thesection.~\insertsection\mysubsectiontitle\mysubsubsectiontitle}
+  \oldframetitle{%
+    \insertsectionnumber\insertsection\withslash{\insertsubsection}\withslash{\insertsubsubsection}
+  }
 }
 
 
@@ -110,10 +113,11 @@
 % Bibliography
 % -----------------------------------------------------------------------------
 
-\usepackage[style=numeric, sorting=none, url=false, doi=false]{biblatex}
+\usepackage[style=numeric, sorting=none, doi=false]{biblatex}
 
 % Avoid giving different numbers to the same citations in different slides.
-\DeclareCiteCommand{\footcite}{\usebibmacro{prenote}}{\footnotemark[\thefield{labelnumber}]\footnotetext[\thefield{labelnumber}]{\fullcite{\thefield{entrykey}}}}{\multicitedelim}{\usebibmacro{postnote}}
+\DeclareCiteCommand{\cite}{\usebibmacro{prenote}}{\footnotemark[\thefield{labelnumber}]\footnotetext[\thefield{labelnumber}]{\fullcite{\thefield{entrykey}}}}{\multicitedelim}{\usebibmacro{postnote}}
+\DeclareCiteCommand{\secondcite}{\usebibmacro{prenote}}{\footnotemark[\thefield{labelnumber}]}{\multicitedelim}{\usebibmacro{postnote}}
 
 % Font size of bibliography
 \def\bibsize{\tiny}
