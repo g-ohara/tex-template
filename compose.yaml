@@ -1,8 +1,0 @@
-services:
-  texlab:
-    image: genjiohara/texlab
-    container_name: tex-template-texlab
-    volumes:
-      - ./:${PWD}
-    working_dir: ${PWD}
-    tty: true
