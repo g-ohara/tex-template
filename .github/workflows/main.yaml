@@ -14,4 +14,3 @@ jobs:
         uses: svenstaro/upload-release-action@v2
         with:
           file: main.pdf
-          repo_token: ${{ secrets.GITHUB_TOKEN }}
