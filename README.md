@@ -41,6 +41,15 @@ and add it to your release.
 - Push the tag.
 - Wait a few minutes.
 
+## Example of Versioning Rule
+
+```
++------- public submission (eg. conference, presentation)
+| +----- private submission (eg. review request for professor)
+| | +--- large changes
+0.0.0
+```
+
 ## Contributing
 
 Pull requests are welcome.
