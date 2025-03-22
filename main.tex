@@ -10,19 +10,19 @@
 
 \section{What is \texttt{tex-template}?}
 
-When you write a \LaTeX{} document,
-you need to compile the source code to a PDF to see how the document looks.
+When you write a \TeX{} document,
+you need to compile the source code to a PDF to see how your document looks.
 But the generated PDF file is not only large but also redundant
 (contains information equivalent to the source code)
-and should not be included in your repo.
+and should not be included in your repository.
 But you may need to read it on the go or share it with someone.
 Upload it to Google Drive?
 No, use \verb|tex-template|.
 
-You can easily compile your \LaTeX{} code to a PDF file locally,
+You can easily compile your \TeX{} code to a PDF file locally,
 and do not need to neither include it in your remote repository
-nor upload it to Google Drive.
-All you need to do is to tag your commit.
+nor upload it to remote storage.
+All you need to do is to push your commit.
 GitHub Actions will compile the source code to a PDF file
 and add it to your release.
 
@@ -43,14 +43,6 @@ and add it to your release.
   \item Create your repository from \verb|tex-template|
   \item Edit \verb|main.tex|
   \item Run: \verb|latexmk main.tex|
-\end{enumerate}
-
-\subsection{How to compile on GitHub}
-
-\begin{enumerate}
-  \item Tag your commit.
-  \item Push the tag.
-  \item Wait a few minutes.
 \end{enumerate}
 
 \section{Contributing}
